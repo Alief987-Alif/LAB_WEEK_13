@@ -9,7 +9,7 @@ import com.bumptech.glide.Glide
 class DetailsActivity : AppCompatActivity() {
 
     companion object {
-        const val EXTRA_TITLE = "titl"
+        const val EXTRA_TITLE = "title"
         const val EXTRA_RELEASE = "release"
         const val EXTRA_OVERVIEW = "overview"
         const val EXTRA_POSTER = "poster"
