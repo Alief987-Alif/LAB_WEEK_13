@@ -1,0 +1,18 @@
+1. Why is MVVM important? Which files represent Model, which files represent View, and which files represent ViewModel?
+Jawab: MVVM penting karena memisahkan dengan jelas antara tampilan (View), logika tampilan (ViewModel), dan data (Model). Hal ini memudahkan desain ulang UI atau pembaruan logika tanpa mempengaruhi komponen lain dan mempermudah penambahan fitur baru. Pola ini juga berguna untuk aplikasi besar yang menggunakan banyak data dan tampilan.
+File yang merepresentasikan komponen:
+Model (Data Layer): Movie.kt, MovieDao.kt , MovieDatabase.kt.
+View (UI): MainActivity.kt dan activity_main.xml.
+ViewModel: MovieViewModel.kt
+
+2. In Part 1, you implemented Data Binding, why is this more efficient than using the normal method?
+Jawab: Dengan Data Binding, layout bisa langsung terhubung ke ViewModel tanpa banyak kode findViewById dan tanpa harus meng-update UI secara manual ketika data berubah. Cukup mengikat viewModel di XML, lalu framework akan otomatis mengubah tampilan saat data di ViewModel berubah.
+
+3. In Part 2, you implemented the Singleton Pattern, why is this important?
+Jawab: Instance Room database itu berat dan sebaiknya hanya dibuat satu kali per proses aplikasi. Pola Singleton di MovieDatabase.getInstance() memastikan hanya ada satu objek database yang dipakai bersama-sama. Ini mencegah pemborosan resource dan mengurangi risiko error karena banyak instance.
+
+4. In Part 2 & 3, you implemented the Repository Pattern, why is this important?
+Jawab: Repository menjadi lapisan perantara antara ViewModel dan sumber data. Pada project, Repository Pattern menyediakan cara untuk menyinkronkan data aplikasi antara layanan web (API) dan database lokal (Room). Pola ini memastikan data di database lokal selalu up-to-date dengan data di web service. Pola ini juga memungkinkan pengguna untuk mengakses aplikasi (melihat data yang tersimpan) bahkan ketika tidak ada koneksi internet di area tersebut.
+
+5. In part 3, you implemented the Worker Manager, is there another way to refresh your database with the latest data other than using Worker?
+Jawab: Cara lain yang dilakukan sebelum menggunakan WorkManager adalah dengan mengambil data (fetch) secara langsung saat aplikasi dijalankan atau saat fungsi tertentu dipanggil. Cara lain lagi adalah dengan menyediakan tombol atau pull-to-refresh di UI yang memanggil fungsi refresh di Repository.
